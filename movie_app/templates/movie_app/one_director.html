@@ -1,0 +1,23 @@
+{% extends "movie_app/base.html" %}
+
+{%block title%} Информация о режиссере - {{director.first_name}} 
+{{director.last_name}} {%endblock%}
+
+{%block content%} 
+<img src='{{director.profile_pic.url}}' width = 200px>
+
+
+<h3>Имя - {{director.first_name}}</h3>
+
+<h3>Фамилия - {{director.last_name}}</h3>
+
+<p>Ел.почта - {{director.email_director}}</p>
+
+<p> Список фильмов </p>
+<ul>
+  {%for movie in director.movies.all%}
+    <li><a href='{{movie.get_url}}'> {{movie}}</a></li>
+  {%endfor%}
+</ul>
+
+{%endblock%}

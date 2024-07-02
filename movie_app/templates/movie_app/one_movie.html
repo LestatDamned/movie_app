@@ -1,0 +1,27 @@
+{% extends "movie_app/base.html" %}
+
+{%block title%} Информация о фильме - {{movie.name}} {%endblock%}
+
+{%block content%} 
+<img src='{{movie.profile_pic.url}}' width = 200px>
+
+
+<h2>Информация о фильме - {{movie.name}}</h2>
+
+<h3>Название фильма - {{movie.name}}</h3>
+
+<p>Рейтинг - {{movie.rating}}</p>
+
+<p>Бюджет - {{movie.budget}}</p>
+
+<p>Год выхода - {{movie.year}}</p>
+
+<p>Режиссер - <a href='{{movie.director.get_url}}'>  {{movie.director}}</a></p>
+
+<p> Список актеров </p>
+<ul>
+  {%for actor in movie.actors.all%}
+    <li><a href='{{actor.get_url}}'> {{actor}}</a></li>
+  {%endfor%}
+</ul>
+{%endblock%}
